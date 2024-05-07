@@ -72,14 +72,19 @@ class Character(pygame.sprite.Sprite):
         super().__init__()
         self.image = image
         # Set the character dimensions
-        character_width = 30
-        character_height = 40
+        character_width = 26
+        character_height = 35
         self.image = pygame.transform.scale(self.image, (character_width, character_height))
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        # Calculate center position
+        center_x = x + (tile_size - character_width) // 2
+        center_y = y + (tile_size - character_height) // 2
+
+        # Set the center position
+        self.rect.x = center_x
+        self.rect.y = center_y
         # Shrink the hitbox
-        self.rect.inflate_ip(-10, -20)
+        # self.rect.inflate_ip(-10, -10)
         self.direction = direction
         self.history = deque(maxlen=max_history_length)
         self.speed = 2
@@ -141,18 +146,18 @@ class Character(pygame.sprite.Sprite):
     def lock_position(self):
         self.at_exit = True
         self.kill()
-        print(f"Character at exit: {self.rect.x}, {self.rect.y}")
+        # print(f"Character at exit: {self.rect.x}, {self.rect.y}")
 
     def record_position(self):
         current_position = (self.rect.x, self.rect.y)
         if not self.history or self.history[-1] != current_position:
-            print(f"Recording position: {self.rect.x}, {self.rect.y}")
+            # print(f"Recording position: {self.rect.x}, {self.rect.y}")
             self.history.append(current_position)
 
     def reverse_position(self):
         if self.history:
             x, y = self.history.pop()
-            print(f"Reversing position to: {x}, {y}")
+            # print(f"Reversing position to: {x}, {y}")
             self.rect.x = x
             self.rect.y = y
             self.alive = True
@@ -162,7 +167,7 @@ class Character(pygame.sprite.Sprite):
     def rewind_position_by(self, positions):
         if len(self.history) >= positions:
             x, y = self.history[-positions]
-            print(f"Rewinding position by {positions} steps to: {x}, {y}")
+            # print(f"Rewinding position by {positions} steps to: {x}, {y}")
             self.rect.x = x
             self.rect.y = y
             self.alive = True
