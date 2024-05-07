@@ -26,23 +26,23 @@ pygame.display.set_caption("Yin and Yang Reversal")
 clock = pygame.time.Clock()
 
 # Load images and scale them to the new size
-character_a_img = pygame.image.load("yin.png").convert_alpha()
+character_a_img = pygame.image.load("img/yin.png").convert_alpha()
 character_a_img = pygame.transform.scale(character_a_img, character_size)
-character_b_img = pygame.image.load("yang.png").convert_alpha()
+character_b_img = pygame.image.load("img/yang.png").convert_alpha()
 character_b_img = pygame.transform.scale(character_b_img, character_size)
-block_img = pygame.image.load("spike-wall.png").convert_alpha()
-background_tile_img = pygame.image.load("background-tile.png").convert()
+block_img = pygame.image.load("img/spike-wall.png").convert_alpha()
+background_tile_img = pygame.image.load("img/background-tile.png").convert()
 background_tile_img = pygame.transform.scale(background_tile_img, (tile_size, tile_size))
-exit_img = pygame.image.load("exit.png").convert_alpha()
-exit_yin_img = pygame.image.load("exit-yin.png").convert_alpha()
-exit_yang_img = pygame.image.load("exit-yang.png").convert_alpha()
-exit_complete_img = pygame.image.load("exit-complete.png").convert_alpha()
+exit_img = pygame.image.load("img/exit.png").convert_alpha()
+exit_yin_img = pygame.image.load("img/exit-yin.png").convert_alpha()
+exit_yang_img = pygame.image.load("img/exit-yang.png").convert_alpha()
+exit_complete_img = pygame.image.load("img/exit-complete.png").convert_alpha()
 exit_img = pygame.transform.scale(exit_img, (tile_size, tile_size))
 exit_yin_img = pygame.transform.scale(exit_yin_img, (tile_size, tile_size))
 exit_yang_img = pygame.transform.scale(exit_yang_img, (tile_size, tile_size))
 exit_complete_img = pygame.transform.scale(exit_complete_img, (tile_size, tile_size))
-menu_background = pygame.image.load("background.png").convert()  # Load the menu background image
-ui_bar_img = pygame.image.load("ui-bar.png").convert()  # Ensure it's the right path
+menu_background = pygame.image.load("img/background.png").convert()  # Load the menu background image
+ui_bar_img = pygame.image.load("img/ui-bar.png").convert()  # Ensure it's the right path
 
 font = pygame.font.Font(None, 74)
 small_font = pygame.font.Font(None, 36)
@@ -243,11 +243,11 @@ def main():
     flash_time = 0
     character_a = None
     character_b = None
-    win_image = pygame.image.load("exit-complete.png").convert_alpha()  # Make sure the image is loaded
+    win_image = pygame.image.load("img/exit-complete.png").convert_alpha()  # Make sure the image is loaded
     win_image = pygame.transform.scale(win_image, (50, 50)) 
-    yin_sprite = pygame.image.load("yin.png").convert_alpha()
+    yin_sprite = pygame.image.load("img/yin.png").convert_alpha()
     yin_sprite = pygame.transform.scale(yin_sprite, (30, 40))  # Adjust size as needed
-    yang_sprite = pygame.image.load("yang.png").convert_alpha()
+    yang_sprite = pygame.image.load("img/yang.png").convert_alpha()
     yang_sprite = pygame.transform.scale(yang_sprite, (30, 40))  # Adjust size as needed
 
     yin_rect = yin_sprite.get_rect(center=(width / 4, height / 2 + 200))
